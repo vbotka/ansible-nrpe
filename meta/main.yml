@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: nrpe
   author: Vladimir Botka
   description: Install and configure NRPE.
   company: https://botka.link
