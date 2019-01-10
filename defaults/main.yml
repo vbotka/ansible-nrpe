@@ -1,0 +1,14 @@
+---
+# defaults for vbotka.nrpe
+
+nrpe_enable: "false"
+nrpe_debug: "false"
+nrpe_backup_conf: "yes"
+
+nrpe_log_file: "/var/log/nrpe.log"
+nrpe_log_file_mode: "0640"
+nrpe_conf:
+  - { key: "log_file", val: "{{ nrpe_log_file }}", present: "true" }
+
+# EOF
+...

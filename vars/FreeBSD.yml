@@ -1,0 +1,27 @@
+---
+# FreeBSD defaults for vbotka.nrpe
+
+freebsd_install_method: "packages"
+# freebsd_install_method: "ports"
+freebsd_use_packages: "yes"
+freebsd_install_retries: 10
+freebsd_install_delay: 5
+
+nrpe_packages:
+  - "net-mgmt/nrpe3"
+
+nrpe_user: "nagios"
+nrpe_group: "nagios"
+
+# rc.conf
+nrpe_service: "nrpe3"
+nrpe_rcconf: []
+
+# nrpe.cfg
+nrpe_conf_recreate: false
+nrpe_conf_file: "/usr/local/etc/nrpe.cfg"
+nrpe_conf_owner: "root"
+nrpe_conf_group: "wheel"
+
+# EOF
+...
