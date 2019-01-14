@@ -1,5 +1,5 @@
 ---
-# FreeBSD defaults for vbotka.nrpe
+# FreeBSD defaults for nrpe
 
 freebsd_install_method: "packages"
 # freebsd_install_method: "ports"
@@ -9,6 +9,7 @@ freebsd_install_delay: 5
 
 nrpe_packages:
   - "net-mgmt/nrpe3"
+  - "net-mgmt/nagios-plugins"
 
 nrpe_user: "nagios"
 nrpe_group: "nagios"

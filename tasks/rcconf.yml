@@ -1,6 +1,6 @@
 ---
 
-- name: "rc_conf: Enable and Start NRPE"
+- name: "rcconf: Enable and Start NRPE"
   lineinfile:
     dest: "/etc/rc.conf"
     regexp: "^{{ nrpe_service }}_enable"
@@ -9,7 +9,7 @@
   notify: enable and start nrpe
   when: nrpe_enable
 
-- name: "rc_conf: Disable and Stop NRPE"
+- name: "rcconf: Disable and Stop NRPE"
   lineinfile:
     dest: "/etc/rc.conf"
     regexp: "^{{ nrpe_service }}_enable"

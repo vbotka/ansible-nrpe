@@ -1,9 +1,9 @@
 ---
-# vars for vbotka.nrpe
+# vars for nrpe
 
-# nrpe_enable: 'true'
-# nrpe_debug: 'true'
-# nrpe_backup_conf: 'yes'
+# nrpe_enable: true
+# nrpe_debug: true
+# nrpe_backup_conf: yes
 
 # EOF
 ...

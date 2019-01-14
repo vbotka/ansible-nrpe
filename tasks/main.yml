@@ -1,5 +1,5 @@
 ---
-# tasks for vbotka.nrpe
+# tasks for nrpe
 
 - import_tasks: vars.yml
   tags: [nrpe-vars, always]

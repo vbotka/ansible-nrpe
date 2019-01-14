@@ -15,3 +15,6 @@ galaxy_info:
     - freebsd
     - nrpe
 dependencies: []
+
+# EOF
+...

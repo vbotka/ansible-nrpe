@@ -1,28 +1,28 @@
 ---
-# handlers for vbotka.nrpe
+# handlers for nrpe
 
 - name: enable and start nrpe
   service:
     name: "{{ nrpe_service }}"
-    state: "started"
-    enabled: "yes"
+    state: started
+    enabled: yes
 
 - name: disable and stop nrpe
   service:
     name: "{{ nrpe_service }}"
-    state: "stopped"
-    enabled: "no"
+    state: stopped
+    enabled: no
 
 - name: restart nrpe
   service:
     name: "{{ nrpe_service }}"
-    state: "restarted"
+    state: restarted
   when: nrpe_enable
 
 - name: reload nrpe
   service:
     name: "{{ nrpe_service }}"
-    state: "reloaded"
+    state: reloaded
   when: nrpe_enable
 
 # EOF
