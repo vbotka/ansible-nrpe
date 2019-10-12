@@ -5,6 +5,8 @@ nrpe
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/nrpe/) Install and configure NRPE.
 
+Nagios Remote Plugin Executor (NRPE)
+
 
 Requirements
 ------------
