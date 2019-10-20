@@ -3,34 +3,35 @@
 - name: "NRPE Debug"
   vars:
     msg: |
-         ansible_architecture [ {{ ansible_architecture }} ]
-         ansible_os_family [ {{ ansible_os_family }} ]
-         ansible_distribution [ {{ ansible_distribution }} ]
+         ansible_architecture [{{ ansible_architecture }}]
+         ansible_os_family [{{ ansible_os_family }}]
+         ansible_distribution [{{ ansible_distribution }}]
          ansible_distribution_major_version
-         [ {{ ansible_distribution_major_version }} ]
-         ansible_distribution_version [ {{ ansible_distribution_version }} ]
-         ansible_distribution_release [ {{ ansible_distribution_release }} ]
+         [{{ ansible_distribution_major_version }}]
+         ansible_distribution_version [{{ ansible_distribution_version }}]
+         ansible_distribution_release [{{ ansible_distribution_release }}]
 
-         freebsd_install_method [ {{ freebsd_install_method }} ]
-         freebsd_use_packages [ {{ freebsd_use_packages }} ]
-         freebsd_install_retries [ {{ freebsd_install_retries }} ]
-         freebsd_install_delay [ {{ freebsd_install_delay }} ]
+         freebsd_install_method [{{ freebsd_install_method }}]
+         freebsd_use_packages [{{ freebsd_use_packages }}]
+         freebsd_install_retries [{{ freebsd_install_retries }}]
+         freebsd_install_delay [{{ freebsd_install_delay }}]
+         nrpe_install [{{ nrpe_install }}]
          nrpe_packages
          {{ nrpe_packages | to_nice_yaml }}
 
-         nrpe_enable [ {{ nrpe_enable }} ]
-         nrpe_backup_conf [ {{ nrpe_backup_conf }} ]
-         nrpe_service [ {{ nrpe_service }} ]
-         nrpe_user [ {{ nrpe_user }} ]
-         nrpe_group [ {{ nrpe_group }} ]
-         nrpe_conf_recreate [ {{ nrpe_conf_recreate }} ]
-         nrpe_conf_file [ {{ nrpe_conf_file }} ]
-         nrpe_conf_owner [ {{ nrpe_conf_owner }} ]
-         nrpe_conf_group [ {{ nrpe_conf_group }} ]
+         nrpe_enable [{{ nrpe_enable }}]
+         nrpe_backup_conf [{{ nrpe_backup_conf }}]
+         nrpe_service [{{ nrpe_service }}]
+         nrpe_user [{{ nrpe_user }}]
+         nrpe_group [{{ nrpe_group }}]
+         nrpe_conf_recreate [{{ nrpe_conf_recreate }}]
+         nrpe_conf_file [{{ nrpe_conf_file }}]
+         nrpe_conf_owner [{{ nrpe_conf_owner }}]
+         nrpe_conf_group [{{ nrpe_conf_group }}]
          nrpe_conf
          {{ nrpe_conf | to_yaml }}
-         nrpe_log_file [ {{ nrpe_log_file }} ]
-         nrpe_log_file_mode [ {{ nrpe_log_file_mode }} ]
+         nrpe_log_file [{{ nrpe_log_file }}]
+         nrpe_log_file_mode [{{ nrpe_log_file_mode }}]
 
          nrpe_rcconf
          {{ nrpe_rcconf | to_yaml }}

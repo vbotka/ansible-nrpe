@@ -2,6 +2,7 @@
 # defaults for nrpe
 
 nrpe_enable: false
+nrpe_install: true
 nrpe_debug: false
 nrpe_backup_conf: "yes"
 

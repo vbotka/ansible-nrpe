@@ -7,7 +7,7 @@
     line: "{{ nrpe_service }}_enable=\"YES\""
     backup: "{{ nrpe_backup_conf }}"
   notify: enable and start nrpe
-  when: nrpe_enable
+  when: nrpe_enable|bool
 
 - name: "rcconf: Disable and Stop NRPE"
   lineinfile:
@@ -16,7 +16,7 @@
     line: "{{ nrpe_service }}_enable=\"NO\""
     backup: "{{ nrpe_backup_conf }}"
   notify: disable and stop nrpe
-  when: not nrpe_enable
+  when: not nrpe_enable|bool
 
 # EOF
 ...

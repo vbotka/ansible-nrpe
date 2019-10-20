@@ -5,10 +5,11 @@
   tags: [nrpe-vars, always]
 
 - import_tasks: debug.yml
-  when: nrpe_debug
+  when: nrpe_debug|bool
   tags: [nrpe-debug, always]
 
 - import_tasks: packages.yml
+  when: nrpe_install|bool
   tags: nrpe-packages
 
 - import_tasks: nrpe.yml
