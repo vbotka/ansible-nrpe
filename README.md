@@ -6,6 +6,8 @@
 
 Nagios Remote Plugin Executor (NRPE)
 
+Please feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-nrpe/issues). Contributions are welcome.
+
 
 ## Requirements
 
@@ -19,19 +21,19 @@ Review defaults and examples in vars.
 
 ## Workflow
 
-1) Install role.
+1) Install role
 
 ```
 shell> ansible-galaxy install vbotka.nrpe
 ```
 
-2) Change variables.
+2) Change variables
 
 ```
 shell> editor vbotka.nrpe/vars/main.yml
 ```
 
-3) Create playbook and inventory.
+3) Create playbook and inventory
 
 ```
 shell> cat nrpe.yml
@@ -42,7 +44,7 @@ shell> cat nrpe.yml
 ```
 
 ```
-# cat hosts
+shell> cat hosts
 [webserver]
 <webserver-ip-or-fqdn>
 [webserver:vars]
@@ -54,13 +56,31 @@ ansible_python_interpreter=/usr/local/bin/python3.6
 ansible_perl_interpreter=/usr/local/bin/perl
 ```
 
-4) Install and configure nrpe.
+4) Install packages
+
+```
+shell> ansible-playbook nrpe.yml -t nrpe-packages
+```
+
+5) Create log
+
+```
+shell> ansible-playbook nrpe.yml -t nrpe-log
+```
+
+6) Test syntax
+
+```
+shell> ansible-playbook nrpe.yml -CD
+```
+
+7) Install and configure NRPE
 
 ```
 shell> ansible-playbook nrpe.yml
 ```
 
-5) TBD ( plugins)
+8) Plugins (TBD)
 		
 
 ## References

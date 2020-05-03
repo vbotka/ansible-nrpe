@@ -43,18 +43,5 @@
   when: not item.present|default(true)
   notify: reload nrpe
 
-- name: "nrpe: Create {{ nrpe_log_file }}"
-  command: "touch {{ nrpe_log_file }}"
-  args:
-    creates: "{{ nrpe_log_file }}"
-    warn: false
-
-- name: "nrpe: chown and chmod {{ nrpe_log_file }}"
-  file:
-    path: "{{ nrpe_log_file }}"
-    owner: "{{ nrpe_user }}"
-    group: "{{ nrpe_group }}"
-    mode: "{{ nrpe_log_file_mode }}"
-
 # EOF
 ...

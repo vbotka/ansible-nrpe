@@ -12,6 +12,9 @@
   when: nrpe_install|bool
   tags: nrpe-packages
 
+- import_tasks: log.yml
+  tags: nrpe-log
+
 - import_tasks: nrpe.yml
   tags: nrpe-conf
 

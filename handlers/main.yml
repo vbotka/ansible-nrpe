@@ -17,13 +17,13 @@
   service:
     name: "{{ nrpe_service }}"
     state: "restarted"
-  when: nrpe_enable
+  when: nrpe_enable|bool
 
 - name: reload nrpe
   service:
     name: "{{ nrpe_service }}"
     state: "reloaded"
-  when: nrpe_enable
+  when: nrpe_enable|bool
 
 # EOF
 ...
