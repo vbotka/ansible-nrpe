@@ -1,12 +1,14 @@
 # nrpe
 
-[![Build Status](https://travis-ci.org/vbotka/ansible-nrpe.svg?branch=master)](https://travis-ci.org/vbotka/ansible-nrpe)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/nrpe)[![Build Status](https://travis-ci.org/vbotka/ansible-nrpe.svg?branch=master)](https://travis-ci.org/vbotka/ansible-nrpe)
 
 [Ansible role.](https://galaxy.ansible.com/vbotka/nrpe/) Install and configure NRPE.
 
 Nagios Remote Plugin Executor (NRPE)
 
-Please feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-nrpe/issues). Contributions are welcome.
+Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-nrpe/issues).
+
+[Contributions are welcome](https://github.com/firstcontributions/first-contributions).
 
 
 ## Requirements
