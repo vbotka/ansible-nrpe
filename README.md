@@ -13,7 +13,9 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 
 ## Requirements
 
-None.
+### Collections
+
+- community.general
 
 
 ## Variables
@@ -23,13 +25,14 @@ Review defaults and examples in vars.
 
 ## Workflow
 
-1) Install role
+1) Install the role and collections
 
 ```
-shell> ansible-galaxy install vbotka.nrpe
+shell> ansible-galaxy role install vbotka.nrpe
+shell> ansible-galaxy collection install community.general
 ```
 
-2) Change variables
+2) Change variables, e.g. vars/main.yml
 
 ```
 shell> editor vbotka.nrpe/vars/main.yml
@@ -58,31 +61,37 @@ ansible_python_interpreter=/usr/local/bin/python3.6
 ansible_perl_interpreter=/usr/local/bin/perl
 ```
 
-4) Install packages
+4a) Check syntax
 
 ```
-shell> ansible-playbook nrpe.yml -t nrpe-packages
+shell> ansible-playbook nrpe.yml --syntax-check
 ```
 
-5) Create log
+4b) Display variables
 
 ```
-shell> ansible-playbook nrpe.yml -t nrpe-log
+shell> ansible-playbook nrpe.yml -e nrpe_debug=true -t nrpe-debug
 ```
 
-6) Test syntax
+4c) Install packages
 
 ```
-shell> ansible-playbook nrpe.yml -CD
+shell> ansible-playbook nrpe.yml -e nrpe_install=true -t nrpe-packages
 ```
 
-7) Install and configure NRPE
+4d) Dry-run and show changes
+
+```
+shell> ansible-playbook nrpe.yml --check --diff
+```
+
+5) Run the playbook if all seems to be right
 
 ```
 shell> ansible-playbook nrpe.yml
 ```
 
-8) Plugins (TBD)
+6) Plugins (TBD)
 		
 
 ## References

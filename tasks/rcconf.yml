@@ -1,19 +1,19 @@
 ---
 
 - name: "rcconf: Enable and Start NRPE"
-  lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "^\\s*{{ nrpe_service }}_enable\\s*=\\s*(.*)$"
-    line: "{{ nrpe_service }}_enable=\"YES\""
+  ansible.builtin.lineinfile:
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ nrpe_service }}_enable\s*=(.*)$'
+    line: '{{ nrpe_service }}_enable="YES"'
     backup: "{{ nrpe_backup_conf }}"
   notify: enable and start nrpe
   when: nrpe_enable|bool
 
 - name: "rcconf: Disable and Stop NRPE"
-  lineinfile:
-    dest: "/etc/rc.conf"
-    regexp: "^\\s*{{ nrpe_service }}_enable\\s*=\\s*(.*)$"
-    line: "{{ nrpe_service }}_enable=\"NO\""
+  ansible.builtin.lineinfile:
+    dest: /etc/rc.conf
+    regexp: '^\s*{{ nrpe_service }}_enable\s*=(.*)$'
+    line: '{{ nrpe_service }}_enable="NO"'
     backup: "{{ nrpe_backup_conf }}"
   notify: disable and stop nrpe
   when: not nrpe_enable|bool

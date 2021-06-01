@@ -16,4 +16,6 @@ galaxy_info:
     - freebsd
     - nrpe
 dependencies: []
+collections:
+  - community.general
 ...
