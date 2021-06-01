@@ -1,13 +1,10 @@
 ---
 
 - name: "log: Create {{ nrpe_log_file }}"
-  command: "touch {{ nrpe_log_file }}"
-  args:
-    creates: "{{ nrpe_log_file }}"
-    warn: false
-
-- name: "log: chown and chmod {{ nrpe_log_file }}"
-  file:
+  ansible.builtin.file:
+    state: touch
+    access_time: preserve
+    modification_time: preserve
     path: "{{ nrpe_log_file }}"
     owner: "{{ nrpe_user }}"
     group: "{{ nrpe_group }}"

@@ -1,16 +1,16 @@
 ---
 
 - name: "packages-freebsd: Install packages"
-  pkgng:
+  community.general.pkgng:
     name: "{{ nrpe_packages }}"
   register: result
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
   delay: "{{ freebsd_install_delay }}"
-  when: freebsd_install_method == "packages"
+  when: freebsd_install_method|lower == "packages"
 
 - name: "packages-freebsd: Install ports"
-  portinstall:
+  community.general.portinstall:
     name: "{{ item }}"
     use_packages: "{{ freebsd_use_packages }}"
   loop: "{{ nrpe_packages }}"
@@ -18,7 +18,7 @@
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
   delay: "{{ freebsd_install_delay }}"
-  when: freebsd_install_method == "ports"
+  when: freebsd_install_method|lower == "ports"
 
 # EOF
 ...

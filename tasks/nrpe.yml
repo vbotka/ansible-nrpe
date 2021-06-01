@@ -1,32 +1,26 @@
 ---
 
 - name: "nrpe: Remove {{ nrpe_conf_file }}"
-  file:
+  ansible.builtin.file:
     path: "{{ nrpe_conf_file }}"
-    state: "absent"
+    state: absent
   when: nrpe_conf_recreate|default(false)|bool
 
-- name: "nrpe: Stat {{ nrpe_conf_file }}"
-  stat:
-    path: "{{ nrpe_conf_file }}"
-  register: conf_file
-
 - name: "nrpe: Create {{ nrpe_conf_file }}"
-  command: "cp {{ nrpe_conf_file }}.sample {{ nrpe_conf_file }}"
-  args:
+  command:
+    cmd: "cp {{ nrpe_conf_file }}.sample {{ nrpe_conf_file }}"
     creates: "{{ nrpe_conf_file }}"
-  when: not conf_file.stat.exists
 
-- name: "nrpe: Chown {{ nrpe_conf_file }}"
-  file:
+- name: "nrpe: Set owner and group of {{ nrpe_conf_file }}"
+  ansible.builtin.file:
     path: "{{ nrpe_conf_file }}"
     owner: "{{ nrpe_conf_owner }}"
     group: "{{ nrpe_conf_group }}"
 
 - name: "nrpe: Configure items in {{ nrpe_conf_file }}"
-  lineinfile:
+  ansible.builtin.lineinfile:
     dest: "{{ nrpe_conf_file }}"
-    regexp: "^\\s*#*\\s*{{ item.key }}"
+    regexp: '^\s*#*\s*{{ item.key }}\s*=(.*)$'
     line: "{{ item.key }}={{ item.val }}"
     backup: "{{ nrpe_backup_conf }}"
   loop: "{{ nrpe_conf }}"
@@ -34,10 +28,11 @@
   notify: reload nrpe
 
 - name: "nrpe: Remove items from {{ nrpe_conf_file }}"
-  lineinfile:
+  ansible.builtin.lineinfile:
+    backrefs: true
     dest: "{{ nrpe_conf_file }}"
-    regexp: "^\\s*#*\\s*{{ item.key }}"
-    line: "# {{ item.key }}"
+    regexp: '^\s*#*\s*{{ item.key }}\s*=(.*)$'
+    line: '# {{ item.key }}=\1'
     backup: "{{ nrpe_backup_conf }}"
   loop: "{{ nrpe_conf }}"
   when: not item.present|default(true)

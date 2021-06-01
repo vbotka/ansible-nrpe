@@ -4,26 +4,24 @@
 nrpe_enable: false
 nrpe_install: true
 nrpe_debug: false
-nrpe_backup_conf: "yes"
+nrpe_backup_conf: false
 
 nrpe_log_file_mode: "0640"
-
-nrpe_log_file: "/var/log/nrpe.log"
+nrpe_log_file: /var/log/nrpe.log
 nrpe_allowed_hosts:
   - "127.0.0.1"
   - "::1"
 nrpe_dont_blame_nrpe: "0"
 nrpe_conf:
-  - {key: "log_file",
-     val: "{{ nrpe_log_file }}",
-     present: true}
-  - {key: "allowed_hosts",
-     val: "{{ nrpe_allowed_hosts|join(',') }}",
-     present: true}
-  - {key: "dont_blame_nrpe",
-     val: "{{ nrpe_dont_blame_nrpe }}",
-     present: true}
-
+  - key: log_file
+    val: "{{ nrpe_log_file }}"
+    present: true
+  - key: allowed_hosts
+    val: "{{ nrpe_allowed_hosts|join(',') }}"
+    present: true
+  - key: dont_blame_nrpe
+    val: "{{ nrpe_dont_blame_nrpe }}"
+    present: true
 
 # EOF
 ...
