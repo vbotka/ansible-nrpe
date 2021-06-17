@@ -7,7 +7,7 @@
   when: nrpe_conf_recreate|default(false)|bool
 
 - name: "nrpe: Create {{ nrpe_conf_file }}"
-  command:
+  ansible.builtin.command:
     cmd: "cp {{ nrpe_conf_file }}.sample {{ nrpe_conf_file }}"
     creates: "{{ nrpe_conf_file }}"
 

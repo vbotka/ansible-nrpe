@@ -1,24 +1,30 @@
 ---
 # tasks for nrpe
 
-- import_tasks: vars.yml
+- name: Import vars.yml
+  ansible.builtin.import_tasks: vars.yml
   tags: [nrpe-vars, always]
 
-- import_tasks: debug.yml
+- name: Import debug.yml
+  ansible.builtin.import_tasks: debug.yml
   when: nrpe_debug|bool
   tags: [nrpe-debug, always]
 
-- import_tasks: packages.yml
+- name: Import packages.yml
+  ansible.builtin.import_tasks: packages.yml
   when: nrpe_install|bool
   tags: nrpe-packages
 
-- import_tasks: log.yml
+- name: Import log.yml
+  ansible.builtin.import_tasks: log.yml
   tags: nrpe-log
 
-- import_tasks: nrpe.yml
+- name: Import nrpe.yml
+  ansible.builtin.import_tasks: nrpe.yml
   tags: nrpe-conf
 
-- import_tasks: service.yml
+- name: Import service.yml
+  ansible.builtin.import_tasks: service.yml
   tags: nrpe-service
 
 # EOF
