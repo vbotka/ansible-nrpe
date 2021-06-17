@@ -13,6 +13,10 @@ Feel free to [share your feedback and report issues](https://github.com/vbotka/a
 
 ## Requirements
 
+### Roles
+
+- [vbotka.ansible_lib](https://galaxy.ansible.com/vbotka/ansible_lib)
+
 ### Collections
 
 - community.general
