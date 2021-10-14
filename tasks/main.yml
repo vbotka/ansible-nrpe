@@ -8,7 +8,7 @@
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
   when: nrpe_debug|bool
-  tags: [nrpe-debug, always]
+  tags: nrpe-debug
 
 - name: Import packages.yml
   ansible.builtin.import_tasks: packages.yml
