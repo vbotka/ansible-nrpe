@@ -8,14 +8,14 @@ freebsd_install_retries: 10
 freebsd_install_delay: 5
 
 nrpe_packages:
-  - net-mgmt/nrpe3
+  - net-mgmt/nrpe
   - net-mgmt/nagios-plugins
 
 nrpe_user: nagios
 nrpe_group: nagios
 
 # rc.conf
-nrpe_service: nrpe3
+nrpe_service: nrpe
 nrpe_rcconf: []
 
 # nrpe.cfg

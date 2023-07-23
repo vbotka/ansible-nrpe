@@ -61,7 +61,7 @@ ansible_connection=ssh
 ansible_user=freebsd
 ansible_become=yes
 ansible_become_method=sudo
-ansible_python_interpreter=/usr/local/bin/python3.6
+ansible_python_interpreter=/usr/local/bin/python3.9
 ansible_perl_interpreter=/usr/local/bin/perl
 ```
 
@@ -74,13 +74,13 @@ shell> ansible-playbook nrpe.yml --syntax-check
 4b) Display variables
 
 ```
-shell> ansible-playbook nrpe.yml -e nrpe_debug=true -t nrpe-debug
+shell> ansible-playbook nrpe.yml -e nrpe_debug=true -t nrpe_debug
 ```
 
 4c) Install packages
 
 ```
-shell> ansible-playbook nrpe.yml -e nrpe_install=true -t nrpe-packages
+shell> ansible-playbook nrpe.yml -e nrpe_install=true -t nrpe_packages
 ```
 
 4d) Dry-run and show changes
@@ -112,4 +112,4 @@ shell> ansible-playbook nrpe.yml
 
 ## Author Information
 
-[Vladimir Botka](https://botka.link)
+[Vladimir Botka](https://botka.info)
