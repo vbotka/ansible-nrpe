@@ -4,5 +4,12 @@
   ansible.builtin.include_tasks: rcconf.yml
   when: ansible_os_family == 'FreeBSD'
 
+- name: "service: {{ state }} {{ nrpe_service }}"
+  ansible.builtin.service:
+    name: "{{ nrpe_service }}"
+    state: "{{ state }}"
+  vars:
+    state: "{{ nrpe_enable|bool|ternary('started', 'stopped') }}"
+
 # EOF
 ...

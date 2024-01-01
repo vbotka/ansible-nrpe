@@ -29,37 +29,42 @@ Review defaults and examples in vars.
 
 ## Workflow
 
-1) Install the role and collections
+1) Install roles
 
-```
+```bash
 shell> ansible-galaxy role install vbotka.nrpe
+shell> ansible-galaxy role install vbotka.ansible_lib
+```
+
+1) Install the collection if necessary
+
+```bash
 shell> ansible-galaxy collection install community.general
 ```
 
-2) Change variables, e.g. vars/main.yml
+2) Change variables, for example in vars/main.yml
 
-```
+```bash
 shell> editor vbotka.nrpe/vars/main.yml
 ```
 
 3) Create playbook and inventory
 
-```
+```yaml
 shell> cat nrpe.yml
----
 - hosts: webserver
   roles:
     - vbotka.nrpe
 ```
 
-```
+```ini
 shell> cat hosts
 [webserver]
 <webserver-ip-or-fqdn>
 [webserver:vars]
 ansible_connection=ssh
 ansible_user=freebsd
-ansible_become=yes
+ansible_become=true
 ansible_become_method=sudo
 ansible_python_interpreter=/usr/local/bin/python3.9
 ansible_perl_interpreter=/usr/local/bin/perl
@@ -67,31 +72,37 @@ ansible_perl_interpreter=/usr/local/bin/perl
 
 4a) Check syntax
 
-```
+```bash
 shell> ansible-playbook nrpe.yml --syntax-check
 ```
 
 4b) Display variables
 
-```
+```bash
 shell> ansible-playbook nrpe.yml -e nrpe_debug=true -t nrpe_debug
 ```
 
 4c) Install packages
 
-```
+```bash
 shell> ansible-playbook nrpe.yml -e nrpe_install=true -t nrpe_packages
 ```
 
-4d) Dry-run and show changes
+4d) Create /usr/local/etc/nrpe.cfg
 
+```bash
+shell> ansible-playbook nrpe.yml -t nrpe_conf_create
 ```
+
+4e) Dry-run and show changes
+
+```bash
 shell> ansible-playbook nrpe.yml --check --diff
 ```
 
 5) Run the playbook if all seems to be right
 
-```
+```bash
 shell> ansible-playbook nrpe.yml
 ```
 
