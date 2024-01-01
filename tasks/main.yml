@@ -3,30 +3,30 @@
 
 - name: Import vars.yml
   ansible.builtin.import_tasks: vars.yml
-  tags: [nrpe-vars, always]
+  tags: [nrpe_vars, always]
 
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
   when: nrpe_debug|bool
-  tags: nrpe-debug
+  tags: nrpe_debug
 
 - name: Import packages.yml
   ansible.builtin.import_tasks: packages.yml
   when: nrpe_install|bool
-  tags: nrpe-packages
+  tags: nrpe_packages
 
 - name: Import log.yml
   ansible.builtin.import_tasks: log.yml
   when: nrpe_log_file_enable|bool
-  tags: nrpe-log
+  tags: nrpe_log
 
 - name: Import nrpe.yml
   ansible.builtin.import_tasks: nrpe.yml
-  tags: nrpe-conf
+  tags: nrpe_conf
 
 - name: Import service.yml
   ansible.builtin.import_tasks: service.yml
-  tags: nrpe-service
+  tags: nrpe_service
 
 # EOF
 ...
