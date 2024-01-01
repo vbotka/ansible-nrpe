@@ -17,6 +17,7 @@
 
 - name: Import log.yml
   ansible.builtin.import_tasks: log.yml
+  when: nrpe_log_file_enable|bool
   tags: nrpe_log
 
 - name: Import nrpe.yml

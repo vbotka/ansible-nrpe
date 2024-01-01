@@ -21,6 +21,7 @@ nrpe_rcconf: []
 # nrpe.cfg
 nrpe_conf_recreate: false
 nrpe_conf_file: /usr/local/etc/nrpe.cfg
+nrpe_conf_file_dir: "{{ nrpe_conf_file }}.d"
 nrpe_conf_owner: root
 nrpe_conf_group: wheel
 
