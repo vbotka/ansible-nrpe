@@ -10,6 +10,7 @@
   ansible.builtin.command:
     cmd: "cp {{ nrpe_conf_file }}.sample {{ nrpe_conf_file }}"
     creates: "{{ nrpe_conf_file }}"
+  tags: nrpe_conf_create
 
 - name: "nrpe: Set owner and group of {{ nrpe_conf_file }}"
   ansible.builtin.file:
@@ -37,6 +38,14 @@
   loop: "{{ nrpe_conf }}"
   when: not item.present|default(true)
   notify: reload nrpe
+
+- name: "nrpe: Create {{ nrpe_conf_file_dir }}"
+  ansible.builtin.file:
+    state: directory
+    path: "{{ nrpe_conf_file_dir }}"
+    owner: "{{ nrpe_conf_owner }}"
+    group: "{{ nrpe_conf_group }}"
+    mode: '0755'
 
 # EOF
 ...

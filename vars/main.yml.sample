@@ -1,9 +1,25 @@
 ---
 # vars for nrpe
 
-# nrpe_enable: true
-# nrpe_debug: true
-# nrpe_backup_conf: yes
+nrpe_enable: true
+nrpe_backup_conf: true
+
+# nrpe.cfg
+nrpe_log_file_enable: true
+nrpe_allowed_hosts:
+  - 127.0.0.1
+  - ::1
+nrpe_dont_blame_nrpe: 0
+nrpe_conf:
+  - key: log_file
+    val: "{{ nrpe_log_file }}"
+    present: true
+  - key: allowed_hosts
+    val: "{{ nrpe_allowed_hosts|join(',') }}"
+    present: true
+  - key: dont_blame_nrpe
+    val: "{{ nrpe_dont_blame_nrpe }}"
+    present: true
 
 # EOF
 ...

@@ -1,6 +1,6 @@
 ---
 
-- name: NRPE Debug
+- name: nrpe Debug
   vars:
     msg: |-
          ansible_architecture: {{ ansible_architecture }}
@@ -15,26 +15,29 @@
          freebsd_use_packages: {{ freebsd_use_packages }}
          freebsd_install_retries: {{ freebsd_install_retries }}
          freebsd_install_delay: {{ freebsd_install_delay }}
+
+         nrpe_backup_conf: {{ nrpe_backup_conf }}
          nrpe_install: {{ nrpe_install }}
          nrpe_packages:
            {{ nrpe_packages|to_nice_yaml(indent=2)|indent(2) }}
          nrpe_enable: {{ nrpe_enable }}
-         nrpe_backup_conf: {{ nrpe_backup_conf }}
          nrpe_service: {{ nrpe_service }}
          nrpe_user: {{ nrpe_user }}
          nrpe_group: {{ nrpe_group }}
+
+         nrpe_log_file_enable: {{ nrpe_log_file_enable }}
+         nrpe_log_file: {{ nrpe_log_file }}
+         nrpe_log_file_mode: {{ nrpe_log_file_mode }}
+
          nrpe_conf_recreate: {{ nrpe_conf_recreate }}
          nrpe_conf_file: {{ nrpe_conf_file }}
+         nrpe_conf_file_dir: {{ nrpe_conf_file_dir }}
          nrpe_conf_owner: {{ nrpe_conf_owner }}
          nrpe_conf_group: {{ nrpe_conf_group }}
          nrpe_conf:
            {{ nrpe_conf|to_yaml(indent=2)|indent(2) }}
-         nrpe_log_file: {{ nrpe_log_file }}
-         nrpe_log_file_mode: {{ nrpe_log_file_mode }}
-
          nrpe_rcconf:
            {{ nrpe_rcconf|to_yaml(indent=2)|indent(2) }}
-
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
 
